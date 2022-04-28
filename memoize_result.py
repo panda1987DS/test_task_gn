@@ -67,13 +67,14 @@ class Cache:
             f"maxsize = {self.maxsize}")
 
 
-"""Python decorator for memorization
- the result of a function
- maxsize - number of values to be remembered
- dump_memo - save to disk flag """
-
-
 def memoize_result(maxsize: int = None, dump_memo: bool = False):
+    """Python decorator for memorization
+      the result of a function
+      :param maxsize: number of values to be remembered
+      :param dump_memo: save to disk flag
+      :return:
+      """
+
     def memoize_result_(function):
         return Cache(function, maxsize, dump_memo)
 
