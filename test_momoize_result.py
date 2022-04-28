@@ -1,24 +1,23 @@
-import pytest
 from datetime import datetime
-from memoize_result import memoize_result
+from memorize_result import memorize_result
 import pickle
 
-@memoize_result()
+@memorize_result()
 def default(par1, par2):
     return datetime.now()
 
 
-@memoize_result()
+@memorize_result()
 def for_clean(par1, par2):
     return datetime.now()
 
 
-@memoize_result(maxsize=2)
+@memorize_result(maxsize=2)
 def max_size(par1):
     return datetime.now()
 
 
-@memoize_result(dump_memo=True)
+@memorize_result(dump_memo=True)
 def dump_memo(par1):
     return datetime.now()
 
