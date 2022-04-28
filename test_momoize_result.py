@@ -60,3 +60,7 @@ def test_dump_memo():
     with open(dump_memo.path, 'rb') as handle:
         memo = pickle.load(handle)
     assert result == memo[("test",)]
+
+
+def test_print():
+    default.print()

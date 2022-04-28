@@ -1,3 +1,5 @@
+"""Module for memorization
+ the result of a function"""
 from typing import Callable, Any
 from collections import OrderedDict
 from warnings import warn
@@ -31,7 +33,7 @@ class Cache:
                 self.memo.popitem(False)
             return result
         except TypeError:
-            warn("Results are not hashed. Can't work with unhashable type parameters. ", RuntimeWarning)
+            warn("Results are not hashed. Can't work with unhashable type parameters.", RuntimeWarning)
             result = self.function(*args)
             return result
 
@@ -57,10 +59,18 @@ class Cache:
     def __len__(self):
         return len(self.memo)
 
-
     def print(self):
         print(
-            f"function = {self.function.__name__} \nmemo = {self.memo} \ndump memo = {self.dump_memo} \nmaxsize = {self.maxsize}")
+            f"function = {self.function.__name__} \n"
+            f"memo = {self.memo} \n"
+            f"dump memo = {self.dump_memo} \n"
+            f"maxsize = {self.maxsize}")
+
+
+"""Python decorator for memorization
+ the result of a function
+ maxsize - number of values to be remembered
+ dump_memo - save to disk flag """
 
 
 def memoize_result(maxsize: int = None, dump_memo: bool = False):
@@ -68,4 +78,3 @@ def memoize_result(maxsize: int = None, dump_memo: bool = False):
         return Cache(function, maxsize, dump_memo)
 
     return memoize_result_
-
